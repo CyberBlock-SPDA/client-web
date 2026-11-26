@@ -13,376 +13,370 @@
 <div id="app">
 
     <header class="topbar">
-      <a class="brand" href="#library" id="brand-home">
-        <span class="brand-mark"><i></i><i></i><i></i></span>
-        CyberBlock
-      </a>
+        <a class="brand" href="#library" id="brand-home">
+            <span class="brand-mark"><i></i><i></i><i></i></span>
+            CyberBlock
+        </a>
 
-      <nav>
-        <a href="#library">Игры</a>
-        <a href="#about">О платформе</a>
-      </nav>
+        <nav>
+            <a href="#library">Игры</a>
+            <a href="#about">О платформе</a>
+        </nav>
 
-      <div class="top-status">
-        <span class="status-dot" id="platform-dot"></span>
-        <span id="platform-status">ЗАГРУЗКА</span>
-      </div>
+        <div class="top-status">
+            <span class="status-dot" id="platform-dot"></span>
+            <span id="platform-status">ЗАГРУЗКА</span>
+        </div>
     </header>
 
     <main>
-      <section class="catalog-screen" id="catalog-screen">
-        <section class="catalog-hero">
-          <div class="catalog-hero-content">
-            <div class="eyebrow">
-              <span></span>
-              ОБЛАЧНЫЙ ГЕЙМИНГ
-            </div>
+        <section class="catalog-screen" id="catalog-screen">
+            <section class="catalog-hero">
+                <div class="catalog-hero-content">
+                    <div class="eyebrow">
+                        <span></span>
+                        ОБЛАЧНЫЙ ГЕЙМИНГ
+                    </div>
 
-            <h1>ИГРАЙ<br><em>БЕЗ УСТАНОВКИ.</em></h1>
+                    <h1>ИГРАЙ<br><em>БЕЗ УСТАНОВКИ.</em></h1>
 
-            <p>
-              Твои игры. Наши серверы. Твой браузер.
-            </p>
+                    <p>
+                        Твои игры. Наши серверы. Твой браузер.
+                    </p>
 
-            <a class="button button-primary" href="#library">
-              К ВЫБОРУ ИГР
-            </a>
-          </div>
+                    <a class="button button-primary" href="#library">
+                        К ВЫБОРУ ИГР
+                    </a>
+                </div>
 
-          <div class="featured-game">
-            <div class="featured-art">
-              <div class="featured-art-glow"></div>
-              <div class="featured-art-lines"></div>
-              <div class="featured-game-label">ИГРА МЕСЯЦА / 001</div>
-              <div class="featured-doom">DOOM</div>
-              <div class="featured-bottom">
-                <span>КЛАССИКА FPS</span>
-                <span>1993</span>
-              </div>
-            </div>
+                <div class="featured-game">
+                    <div class="featured-art">
+                        <div class="featured-art-glow"></div>
+                        <div class="featured-art-lines"></div>
+                        <div class="featured-doom">DOOM</div>
+                    </div>
 
-            <div class="featured-info">
-              <div>
-                <span class="featured-kicker">УЖЕ ДОСТУПНА</span>
-                <h2>DOOM</h2>
-                <p>Классический шутер прямо в браузере.</p>
-              </div>
+                    <div class="featured-info">
+                        <div>
+                            <h2>DOOM</h2>
+                            <p>Классический шутер прямо в браузере.</p>
+                        </div>
 
-              <button class="button button-primary" data-open-game="doom">
-                ОБ ИГРЕ
-              </button>
-            </div>
-          </div>
+                        <button class="button button-primary" data-play-game="doom">
+                            ИГРАТЬ
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="library-section" id="library">
+                <div class="library-heading">
+                    <div>
+                        <div class="eyebrow">КОЛЛЕКЦИЯ ИГР</div>
+                        <h2>Выбери свою <em>игру.</em></h2>
+                    </div>
+                    <div class="library-count">
+                        <span>01 ИЗ 04</span>
+                        <small>ИГРА ДОСТУПНА СЕЙЧАС</small>
+                    </div>
+                </div>
+
+                <div class="game-grid">
+
+                    <article
+                            class="game-card doom"
+                            data-open-game="doom"
+                            tabindex="0"
+                            role="button"
+                            aria-label="Подробнее об игре DOOM"
+                    >
+                        <div class="game-art">
+                            <div class="game-art-no">01</div>
+                            <div class="game-art-glow"></div>
+                            <div class="game-art-title">DOOM</div>
+                            <div class="game-art-subtitle">Крушите демонов.</div>
+                            <div class="game-art-year">1993</div>
+                            <span class="available-tag"><i></i> ДОСТУПНА</span>
+                        </div>
+
+                        <div class="game-card-info">
+                            <div>
+                                <h3>DOOM</h3>
+                                <span>ШУТЕР / ЭКШЕН</span>
+                            </div>
+                            <button class="card-play" data-play-game="doom">ИГРАТЬ</button>
+                        </div>
+                    </article>
+
+                    <article
+                            class="game-card quake game-unavailable"
+                            data-open-game="quake"
+                            tabindex="0"
+                            role="button"
+                            aria-label="Подробнее об игре QUAKE"
+                    >
+                        <div class="game-art">
+                            <div class="game-art-no">02</div>
+                            <div class="game-art-glow"></div>
+                            <div class="game-art-title">QUAKE</div>
+                            <div class="game-art-subtitle">Войдите на арену.</div>
+                            <div class="game-art-year">1996</div>
+                            <span class="coming-soon">СКОРО</span>
+                        </div>
+
+                        <div class="game-card-info">
+                            <div>
+                                <h3>QUAKE</h3>
+                                <span>ШУТЕР / ЭКШЕН</span>
+                            </div>
+                            <span class="card-soon">СКОРО</span>
+                        </div>
+                    </article>
+
+                    <article
+                            class="game-card half-life game-unavailable"
+                            data-open-game="half-life"
+                            tabindex="0"
+                            role="button"
+                            aria-label="Подробнее об игре HALF-LIFE"
+                    >
+                        <div class="game-art">
+                            <div class="game-art-no">03</div>
+                            <div class="game-art-glow"></div>
+                            <div class="game-art-title">HALF-LIFE</div>
+                            <div class="game-art-subtitle">Начало новой истории.</div>
+                            <div class="game-art-year">1998</div>
+                            <span class="coming-soon">СКОРО</span>
+                        </div>
+
+                        <div class="game-card-info">
+                            <div>
+                                <h3>HALF-LIFE</h3>
+                                <span>ШУТЕР / ФАНТАСТИКА</span>
+                            </div>
+                            <span class="card-soon">СКОРО</span>
+                        </div>
+                    </article>
+
+                    <article
+                            class="game-card counter-strike game-unavailable"
+                            data-open-game="counter-strike"
+                            tabindex="0"
+                            role="button"
+                            aria-label="Подробнее об игре COUNTER-STRIKE"
+                    >
+                        <div class="game-art">
+                            <div class="game-art-no">04</div>
+                            <div class="game-art-glow"></div>
+                            <div class="game-art-title">COUNTER-STRIKE</div>
+                            <div class="game-art-subtitle">Выбери свою сторону.</div>
+                            <div class="game-art-year">2000</div>
+                            <span class="coming-soon">СКОРО</span>
+                        </div>
+
+                        <div class="game-card-info">
+                            <div>
+                                <h3>COUNTER-STRIKE</h3>
+                                <span>ТАКТИЧЕСКИЙ ШУТЕР</span>
+                            </div>
+                            <span class="card-soon">СКОРО</span>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <section class="about-section" id="about">
+                <div class="about-heading">
+                    <div class="eyebrow">КАК ЭТО РАБОТАЕТ</div>
+                    <h2>Три шага<em> до игры.</em></h2>
+                </div>
+
+                <div class="about-steps">
+                    <article>
+                        <span>01</span>
+                        <h3>Выбери игру</h3>
+                        <p>Найди подходящую игру в каталоге.</p>
+                    </article>
+
+                    <article>
+                        <span>02</span>
+                        <h3>Подключись</h3>
+                        <p>Мы подготовим для тебя игровую сессию.</p>
+                    </article>
+
+                    <article>
+                        <span>03</span>
+                        <h3>Играй</h3>
+                        <p>Игровой поток появится прямо в браузере.</p>
+                    </article>
+                </div>
+            </section>
+            <section class="benefits-section">
+                <div class="benefits-heading">
+                    <div class="eyebrow">ПОЧЕМУ CYBERBLOCK</div>
+                    <h2>Играй без<br><em>ограничений.</em></h2>
+                    <p>Запускай игры на удалённых серверах и играй прямо через браузер. Без скачивания и установки на
+                        своё устройство.</p>
+                </div>
+
+                <div class="benefits-grid">
+                    <article class="benefit-card">
+                        <span class="benefit-number">01</span>
+                        <div class="benefit-icon">↗</div>
+                        <h3>Без установки</h3>
+                        <p>
+                            Не нужно скачивать игровые файлы
+                            и занимать место на устройстве.
+                        </p>
+                    </article>
+
+                    <article class="benefit-card">
+                        <span class="benefit-number">02</span>
+                        <div class="benefit-icon">⌘</div>
+                        <h3>Через браузер</h3>
+                        <p>
+                            Запускай игровую сессию
+                            без отдельного приложения.
+                        </p>
+                    </article>
+
+                    <article class="benefit-card">
+                        <span class="benefit-number">03</span>
+                        <div class="benefit-icon">◈</div>
+                        <h3>Удобное управление</h3>
+                        <p>
+                            Используй привычные клавиатуру
+                            и мышь для управления игрой.
+                        </p>
+                    </article>
+                </div>
+            </section>
         </section>
 
-        <section class="library-section" id="library">
-          <div class="library-heading">
-            <div>
-              <div class="eyebrow">КОЛЛЕКЦИЯ ИГР</div>
-                <h2>Выбери свою <em>игру.</em></h2>
-            </div>
-            <div class="library-count">
-              <span>01 ИЗ 04</span>
-              <small>ИГРА ДОСТУПНА СЕЙЧАС</small>
-            </div>
-          </div>
-
-          <div class="game-grid">
-
-              <article
-                class="game-card doom"
-                data-open-game="doom"
-                tabindex="0"
-                role="button"
-                aria-label="Подробнее об игре DOOM"
-              >
-                <div class="game-art">
-                  <div class="game-art-no">01</div>
-                  <div class="game-art-glow"></div>
-                  <div class="game-art-title">DOOM</div>
-                  <div class="game-art-subtitle">Крушите демонов.</div>
-                  <div class="game-art-year">1993</div>
-                  <span class="available-tag"><i></i> ДОСТУПНА</span>
-                </div>
-
-                <div class="game-card-info">
-                  <div>
-                    <h3>DOOM</h3>
-                    <span>ШУТЕР / ЭКШЕН</span>
-                  </div>
-                  <button class="card-play" data-play-game="doom">ИГРАТЬ</button>
-                </div>
-              </article>
-
-              <article
-                class="game-card quake game-unavailable"
-                data-open-game="quake"
-                tabindex="0"
-                role="button"
-                aria-label="Подробнее об игре QUAKE"
-              >
-                <div class="game-art">
-                  <div class="game-art-no">02</div>
-                  <div class="game-art-glow"></div>
-                  <div class="game-art-title">QUAKE</div>
-                  <div class="game-art-subtitle">Войдите на арену.</div>
-                  <div class="game-art-year">1996</div>
-                  <span class="coming-soon">СКОРО</span>
-                </div>
-
-                <div class="game-card-info">
-                  <div>
-                    <h3>QUAKE</h3>
-                    <span>ШУТЕР / ЭКШЕН</span>
-                  </div>
-                  <span class="card-soon">СКОРО</span>
-                </div>
-              </article>
-
-              <article
-                class="game-card half-life game-unavailable"
-                data-open-game="half-life"
-                tabindex="0"
-                role="button"
-                aria-label="Подробнее об игре HALF-LIFE"
-              >
-                <div class="game-art">
-                  <div class="game-art-no">03</div>
-                  <div class="game-art-glow"></div>
-                  <div class="game-art-title">HALF-LIFE</div>
-                  <div class="game-art-subtitle">Начало новой истории.</div>
-                  <div class="game-art-year">1998</div>
-                  <span class="coming-soon">СКОРО</span>
-                </div>
-
-                <div class="game-card-info">
-                  <div>
-                    <h3>HALF-LIFE</h3>
-                    <span>ШУТЕР / ФАНТАСТИКА</span>
-                  </div>
-                  <span class="card-soon">СКОРО</span>
-                </div>
-              </article>
-
-              <article
-                class="game-card counter-strike game-unavailable"
-                data-open-game="counter-strike"
-                tabindex="0"
-                role="button"
-                aria-label="Подробнее об игре COUNTER-STRIKE"
-              >
-                <div class="game-art">
-                  <div class="game-art-no">04</div>
-                  <div class="game-art-glow"></div>
-                  <div class="game-art-title">COUNTER-STRIKE</div>
-                  <div class="game-art-subtitle">Выбери свою сторону.</div>
-                  <div class="game-art-year">2000</div>
-                  <span class="coming-soon">СКОРО</span>
-                </div>
-
-                <div class="game-card-info">
-                  <div>
-                    <h3>COUNTER-STRIKE</h3>
-                    <span>ТАКТИЧЕСКИЙ ШУТЕР</span>
-                  </div>
-                  <span class="card-soon">СКОРО</span>
-                </div>
-              </article>
-
-          </div>
-        </section>
-
-        <section class="about-section" id="about">
-          <div class="about-heading">
-            <div class="eyebrow">КАК ЭТО РАБОТАЕТ</div>
-            <h2>Три шага<em> до игры.</em></h2>
-          </div>
-
-          <div class="about-steps">
-            <article>
-              <span>01</span>
-              <h3>Выбери игру</h3>
-              <p>Найди подходящую игру в каталоге.</p>
-            </article>
-
-            <article>
-              <span>02</span>
-              <h3>Подключись</h3>
-              <p>Мы подготовим для тебя игровую сессию.</p>
-            </article>
-
-            <article>
-              <span>03</span>
-              <h3>Играй</h3>
-              <p>Игровой поток появится прямо в браузере.</p>
-            </article>
-          </div>
-        </section>
-                <section class="benefits-section">
-          <div class="benefits-heading">
-            <div class="eyebrow">ПОЧЕМУ CYBERBLOCK</div>
-            <h2>Играй без<br><em>ограничений.</em></h2>
-            <p>Запускай игры на удалённых серверах и играй прямо через браузер. Без скачивания и установки на своё устройство.</p>
-          </div>
-
-          <div class="benefits-grid">
-            <article class="benefit-card">
-              <span class="benefit-number">01</span>
-              <div class="benefit-icon">↗</div>
-              <h3>Без установки</h3>
-              <p>
-                Не нужно скачивать игровые файлы
-                и занимать место на устройстве.
-              </p>
-            </article>
-
-            <article class="benefit-card">
-              <span class="benefit-number">02</span>
-              <div class="benefit-icon">⌘</div>
-              <h3>Через браузер</h3>
-              <p>
-                Запускай игровую сессию
-                без отдельного приложения.
-              </p>
-            </article>
-
-            <article class="benefit-card">
-              <span class="benefit-number">03</span>
-              <div class="benefit-icon">◈</div>
-              <h3>Удобное управление</h3>
-              <p>
-                Используй привычные клавиатуру
-                и мышь для управления игрой.
-              </p>
-            </article>
-          </div>
-        </section>
-      </section>
-
-      <section class="details-screen hidden" id="details-screen">
-        <button class="back-link" id="details-back">
-           НАЗАД К КОЛЛЕКЦИИ
-        </button>
-
-        <div class="details-layout">
-          <div class="details-art" id="details-art">
-            <div class="details-art-glow"></div>
-            <div class="details-art-number" id="details-number">01</div>
-            <div class="details-art-title" id="details-art-title">DOOM</div>
-            <div class="details-art-year" id="details-art-year">1993</div>
-          </div>
-
-          <div class="details-info">
-            <div class="eyebrow">
-              <span></span>
-              ИНФОРМАЦИЯ ОБ ИГРЕ
-            </div>
-
-            <div class="details-status" id="details-status">
-              ДОСТУПНА
-            </div>
-
-            <h1 id="details-title">DOOM</h1>
-
-            <p class="details-subtitle" id="details-subtitle"></p>
-            <p class="details-description" id="details-description"></p>
-
-            <div class="details-meta">
-              <div>
-                <span>ЖАНР</span>
-                <strong id="details-genre"></strong>
-              </div>
-
-              <div>
-                <span>ГОД ВЫХОДА</span>
-                <strong id="details-year"></strong>
-              </div>
-            </div>
-
-            <button class="button button-primary" id="details-play">
-              ИГРАТЬ
+        <section class="details-screen hidden" id="details-screen">
+            <button class="back-link" id="details-back">
+                НАЗАД К КОЛЛЕКЦИИ
             </button>
 
-            <p class="details-unavailable hidden" id="details-unavailable">
-              Эта игра пока не подключена к платформе.
-              Следи за обновлениями!
-            </p>
-          </div>
-        </div>
-      </section>
+            <div class="details-layout">
+                <div class="details-art" id="details-art">
+                    <div class="details-art-glow"></div>
+                    <div class="details-art-number" id="details-number">01</div>
+                    <div class="details-art-title" id="details-art-title">DOOM</div>
+                    <div class="details-art-year" id="details-art-year">1993</div>
+                </div>
 
-      <section class="game-section hidden" id="game-screen">
-        <div class="game-head">
-          <div>
-            <div class="eyebrow">
-              <span></span>
-              CyberBlock / ИГРОВАЯ СЕССИЯ
+                <div class="details-info">
+                    <div class="eyebrow">
+                        <span></span>
+                        ИНФОРМАЦИЯ ОБ ИГРЕ
+                    </div>
+
+                    <div class="details-status" id="details-status">
+                        ДОСТУПНА
+                    </div>
+
+                    <h1 id="details-title">DOOM</h1>
+
+                    <p class="details-subtitle" id="details-subtitle"></p>
+                    <p class="details-description" id="details-description"></p>
+
+                    <div class="details-meta">
+                        <div>
+                            <span>ЖАНР</span>
+                            <strong id="details-genre"></strong>
+                        </div>
+
+                        <div>
+                            <span>ГОД ВЫХОДА</span>
+                            <strong id="details-year"></strong>
+                        </div>
+                    </div>
+
+                    <button class="button button-primary" id="details-play">
+                        ИГРАТЬ
+                    </button>
+
+                    <p class="details-unavailable hidden" id="details-unavailable">
+                        Эта игра пока не подключена к платформе.
+                        Следи за обновлениями!
+                    </p>
+                </div>
             </div>
-            <h2 id="game-title">DOOM</h2>
-          </div>
+        </section>
 
-          <button class="button button-ghost" id="exit-game">
-             НАЗАД К ИГРЕ
-          </button>
-        </div>
+        <section class="game-section hidden" id="game-screen">
+            <div class="game-head">
+                <div class="eyebrow">
+                    <span></span>
+                    CyberBlock / ИГРОВАЯ СЕССИЯ
+                </div>
 
-        <div class="game-frame" id="game-surface" tabindex="0">
-          <video id="game-video" autoplay playsinline muted></video>
+                <h2 id="game-title">DOOM</h2>
 
-          <div class="game-placeholder" id="game-placeholder">
-            <div class="loader" id="game-loader"></div>
-            <strong id="game-message">Подготавливаем игровую сессию</strong>
-            <span id="game-description">
-              Подождите, пока мы подключимся к игровому серверу.
-            </span>
-          </div>
+                <button class="button button-ghost" id="exit-game">
+                    НАЗАД К ИГРАМ
+                </button>
+            </div>
 
-          <button class="button button-primary hidden" id="manual-play">
-            НАЧАТЬ ИГРУ
-          </button>
-        </div>
+            <div class="game-frame" id="game-surface" tabindex="0">
+                <video id="game-video" autoplay playsinline muted></video>
 
-        <div class="game-footer">
-          <span id="connection-label">СТАТУС: ОЖИДАНИЕ</span>
-          <span id="session-label">СЕССИЯ: НЕ СОЗДАНА</span>
-        </div>
+                <div class="game-placeholder" id="game-placeholder">
+                    <div class="loader" id="game-loader"></div>
+                    <strong id="game-message">Подготавливаем игровую сессию</strong>
+                    <span id="game-description">
+                Подождите, пока мы подключимся к игровому серверу.
+              </span>
+                </div>
 
-        <p class="system-message" id="game-error"></p>
-      </section>
+                <button class="button button-primary hidden" id="manual-play">
+                    НАЧАТЬ ИГРУ
+                </button>
+            </div>
+
+            <div class="game-footer">
+                <span id="connection-label">СТАТУС: ОЖИДАНИЕ</span>
+                <span id="session-label">СЕССИЯ: НЕ СОЗДАНА</span>
+            </div>
+
+            <p class="system-message" id="game-error"></p>
+        </section>
     </main>
 
     <footer class="site-footer">
-      <div class="footer-main">
-        <div class="footer-brand">
-          <a class="brand" href="#library" id="footer-home">
-            <span class="brand-mark"><i></i><i></i><i></i></span>
-            CyberBlock
-          </a>
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a class="brand" href="#library" id="footer-home">
+                    <span class="brand-mark"><i></i><i></i><i></i></span>
+                    CyberBlock
+                </a>
 
-          <p>
-             Облачный гейминг.<br>
-             Игры без установки.
-          </p>
+                <p>
+                    Облачный гейминг.<br>
+                    Игры без установки.
+                </p>
+            </div>
+
+            <div class="footer-navigation">
+                <span class="footer-title">НАВИГАЦИЯ</span>
+                <a href="#library">Каталог игр</a>
+                <a href="#about">Как это работает</a>
+                <a href="#about">О платформе</a>
+            </div>
+
+            <div class="footer-project">
+                <span class="footer-title">О ПРОЕКТЕ</span>
+                <p>CyberBlock — платформа облачного гейминга.</p>
+                <span class="footer-label">CLOUD GAMING PLATFORM</span>
+            </div>
         </div>
 
-        <div class="footer-navigation">
-          <span class="footer-title">НАВИГАЦИЯ</span>
-          <a href="#library">Каталог игр</a>
-          <a href="#about">Как это работает</a>
-          <a href="#about">О платформе</a>
+        <div class="footer-bottom">
+            <span>© 2026 CYBERBLOCK</span>
+            <span>СОЗДАНО ДЛЯ ИГРЫ</span>
         </div>
-
-        <div class="footer-project">
-          <span class="footer-title">О ПРОЕКТЕ</span>
-          <p>CyberBlock — платформа облачного гейминга.</p>
-          <span class="footer-label">CLOUD GAMING PLATFORM</span>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© 2026 CYBERBLOCK</span>
-        <span>СОЗДАНО ДЛЯ ИГРЫ</span>
-      </div>
     </footer>
 </div>
 
