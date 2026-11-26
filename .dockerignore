@@ -1,0 +1,11 @@
+.git
+.idea
+.vscode
+node_modules
+dist
+.env
+*.log
+*.tmp
+*.bak
+cmd
+go.mod
