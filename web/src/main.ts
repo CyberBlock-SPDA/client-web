@@ -532,6 +532,13 @@ function maybeCloseSignaling(): void {
 
 // ---------- INPUT ----------
 
+const doomKeys: Readonly<Record<string, string>> = {
+    KeyW: "ArrowUp",
+    KeyA: "Comma",
+    KeyS: "ArrowDown",
+    KeyD: "Period"
+};
+
 class InputController {
     private keys = new Set<string>();
     private buttons = new Set<string>();
@@ -573,6 +580,7 @@ class InputController {
         );
 
         surface.addEventListener("focus", this.onSurfaceFocus);
+        surface.addEventListener("blur", this.onBlur);
         surface.addEventListener("click", this.onSurfaceClick);
         surface.addEventListener("mousemove", this.onMouseMove);
         surface.addEventListener("mousedown", this.onMouseDown);
@@ -607,35 +615,32 @@ class InputController {
     private onKeyDown(event: KeyboardEvent): void {
         if (
             !this.focused ||
-            event.repeat ||
             document.activeElement !== this.surface
         ) return;
 
-        if (!this.keys.has(event.code)) {
-            this.keys.add(event.code);
+        event.preventDefault();
+        if (event.repeat || this.keys.has(event.code)) return;
 
+        const code = doomKeys[event.code] ?? event.code;
+        const alreadyHeld = this.pressedGameKeys().includes(code);
+        this.keys.add(event.code);
+        if (!alreadyHeld) {
             this.send({
                 type: "key",
                 action: "down",
-                code: event.code
+                code
             });
         }
-
-        event.preventDefault();
     }
 
     private onKeyUp(event: KeyboardEvent): void {
-        if (!this.keys.has(event.code)) return;
-
-        this.keys.delete(event.code);
-
-        this.send({
-            type: "key",
-            action: "up",
-            code: event.code
-        });
+        if (!this.keys.delete(event.code)) return;
 
         event.preventDefault();
+        const code = doomKeys[event.code] ?? event.code;
+        if (!this.pressedGameKeys().includes(code)) {
+            this.send({ type: "key", action: "up", code });
+        }
     }
 
     private onMouseMove(event: MouseEvent): void {
@@ -712,7 +717,8 @@ class InputController {
     }
 
     private onSurfaceClick(): void {
-        this.surface.focus();
+        this.surface.focus({ preventScroll: true });
+        this.setFocus(true);
 
         if (
             document.pointerLockElement !== this.surface &&
@@ -749,7 +755,7 @@ class InputController {
     }
 
     private onWindowFocus(): void {
-        if (!document.hidden) {
+        if (!document.hidden && document.activeElement === this.surface) {
             this.setFocus(true);
         }
     }
@@ -781,10 +787,14 @@ class InputController {
     private sendSnapshot(): void {
         this.send({
             type: "input_state",
-            pressedKeys: [...this.keys],
+            pressedKeys: this.pressedGameKeys(),
             pressedButtons: [...this.buttons],
             focused: this.focused
         });
+    }
+
+    private pressedGameKeys(): string[] {
+        return [...new Set([...this.keys].map(code => doomKeys[code] ?? code))];
     }
 
     private releaseLocal(): void {
@@ -815,6 +825,7 @@ class InputController {
         );
 
         this.surface.removeEventListener("focus", this.onSurfaceFocus);
+        this.surface.removeEventListener("blur", this.onBlur);
         this.surface.removeEventListener("click", this.onSurfaceClick);
         this.surface.removeEventListener("mousemove", this.onMouseMove);
         this.surface.removeEventListener("mousedown", this.onMouseDown);
@@ -828,11 +839,13 @@ function updatePlayingState(): void {
     const video = $("game-video") as HTMLVideoElement | null;
 
     if (
+        state !== "PLAYING" &&
         peer?.connectionState === "connected" &&
         inputChannel?.readyState === "open" &&
         video?.srcObject
     ) {
         setState("PLAYING");
+        $("game-surface")?.focus({ preventScroll: true });
     }
 }
 
