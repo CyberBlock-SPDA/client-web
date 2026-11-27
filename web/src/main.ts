@@ -863,7 +863,8 @@ async function connectToGame(session: SessionInfo): Promise<void> {
     };
 
     peer.onicecandidate = event => {
-        if (event.candidate) {
+        // Empty candidates end one media section; null ends gathering globally.
+        if (event.candidate?.candidate) {
             try {
                 sendSignal({
                     type: "ice-candidate",
@@ -872,7 +873,7 @@ async function connectToGame(session: SessionInfo): Promise<void> {
             } catch (error) {
                 failSession(String(error));
             }
-        } else {
+        } else if (event.candidate === null) {
             localIceComplete = true;
 
             try {
