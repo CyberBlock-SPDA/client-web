@@ -29,7 +29,9 @@ interface SessionInfo {
 
 interface ClientConfig {
     apiBaseUrl?: string;
+    iceCredentialsEndpoint?: string;
     iceServers?: RTCIceServer[];
+    iceTransportPolicy?: RTCIceTransportPolicy;
     requestTimeoutMs?: number;
     signalingTimeoutMs?: number;
     connectionTimeoutMs?: number;
@@ -43,6 +45,7 @@ declare global {
 }
 
 const config = window.CYBERBLOCK_CONFIG ?? {};
+let activeIceServers = config.iceServers ?? [];
 
 const API_BASE_URL = (config.apiBaseUrl ?? "/api")
     .replace(/\/+$/, "");
@@ -318,6 +321,67 @@ async function createSession(gameId: string): Promise<SessionInfo> {
             requestController = null;
         }
     }
+}
+
+async function loadIceServers(): Promise<void> {
+    if (!config.iceCredentialsEndpoint) {
+        activeIceServers = config.iceServers ?? [];
+        return;
+    }
+
+    const controller = new AbortController();
+    const timeout = window.setTimeout(
+        () => controller.abort(),
+        REQUEST_TIMEOUT
+    );
+    let response: Response;
+    let body: {
+        iceServers?: RTCIceServer[];
+        detail?: string;
+        title?: string;
+    } | null;
+
+    try {
+        response = await fetch(config.iceCredentialsEndpoint, {
+            headers: {
+                "Accept": "application/json, application/problem+json"
+            },
+            cache: "no-store",
+            signal: controller.signal
+        });
+        body = await response.json().catch(() => null);
+    } catch (error) {
+        if (controller.signal.aborted) {
+            throw new Error("Таймаут получения ICE relay credentials.");
+        }
+        throw error;
+    } finally {
+        clearTimeout(timeout);
+    }
+
+    if (!response.ok) {
+        throw new Error(
+            body?.detail ||
+            body?.title ||
+            `Не удалось получить ICE relay credentials (HTTP ${response.status}).`
+        );
+    }
+
+    if (
+        !body ||
+        !Array.isArray(body.iceServers) ||
+        body.iceServers.length === 0 ||
+        body.iceServers.some(server =>
+            !server ||
+            !server.urls ||
+            !server.username ||
+            !server.credential
+        )
+    ) {
+        throw new Error("Backend вернул некорректные ICE relay credentials.");
+    }
+
+    activeIceServers = body.iceServers;
 }
 
 // ---------- SIGNALING ----------
@@ -803,7 +867,8 @@ async function connectToGame(session: SessionInfo): Promise<void> {
     pendingCandidates = [];
 
     peer = new RTCPeerConnection({
-        iceServers: config.iceServers ?? []
+        iceServers: activeIceServers,
+        iceTransportPolicy: config.iceTransportPolicy ?? "all"
     });
 
     peer.addTransceiver("video", {
@@ -1076,6 +1141,7 @@ async function startGame(gameId: string): Promise<void> {
 
     try {
         checkBrowser();
+        await loadIceServers();
 
         setState("ALLOCATING");
 
