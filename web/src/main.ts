@@ -97,6 +97,7 @@ function hide(id: string): void {
 
 function setState(next: AppState): void {
     state = next;
+    $("game-video")?.classList.toggle("video-visible", next === "PLAYING");
 
     const labels: Record<AppState, string> = {
         IDLE: "ГОТОВ К ЗАПУСКУ",
