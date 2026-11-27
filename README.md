@@ -63,10 +63,12 @@ npm run dev
 
 ## Конфигурация
 
-Параметры клиента задаются через `window.CYBERBLOCK_CONFIG` в `web/index.html`.
+Параметры клиента задаются через `window.CYBERBLOCK_CONFIG` в `/config.js`,
+который загружается до application module. В образ включён локальный default
+config.js; в Kubernetes файл передаётся через ConfigMap без пересборки образа.
 
 Основные настройки:
-- `apiBaseUrl` — адрес backend.
+- `apiBaseUrl` — same-origin API path, обычно `/api`.
 - `iceServers` — STUN/TURN серверы.
 - `requestTimeoutMs` — таймаут REST-запросов.
 - `signalingTimeoutMs` — таймаут signaling.
@@ -78,6 +80,15 @@ npm run dev
 ```bash
 npm run build
 ```
+
+Vite dev server проксирует `/api` и `/healthz` на backend, если задан
+`VITE_API_PROXY_TARGET`. Например:
+
+```sh
+VITE_API_PROXY_TARGET=http://127.0.0.1:8080 npm run dev
+```
+
+В production frontend обращается только к относительным URL на том же origin.
 
 Для локального просмотра production-сборки:
 

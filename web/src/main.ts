@@ -44,7 +44,7 @@ declare global {
 
 const config = window.CYBERBLOCK_CONFIG ?? {};
 
-const API_URL = (config.apiBaseUrl ?? "http://localhost:8080")
+const API_BASE_URL = (config.apiBaseUrl ?? "/api")
     .replace(/\/+$/, "");
 
 const REQUEST_TIMEOUT = config.requestTimeoutMs ?? 10000;
@@ -178,7 +178,7 @@ async function checkBackend(): Promise<void> {
     );
 
     try {
-        const response = await fetch(`${API_URL}/healthz`, {
+        const response = await fetch("/healthz", {
             signal: controller.signal
         });
 
@@ -216,7 +216,7 @@ async function createSession(gameId: string): Promise<SessionInfo> {
     );
 
     try {
-        const response = await fetch(`${API_URL}/api/v1/sessions`, {
+        const response = await fetch(`${API_BASE_URL}/v1/sessions`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
